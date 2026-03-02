@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEO Title Checker</title>
+    <title>SEO Title and Meta Description Checker</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -68,24 +68,49 @@
             font-family: "Courier New", monospace;
             color: #222;
         }
+
+        .section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>SEO Title Checker Tool</h1>
-    <label for="seo-title">Enter SEO Title:</label>
-    <input type="text" id="seo-title" placeholder="Enter your SEO title here...">
-    
-    <div class="status">
-        Status: <span id="status" class="yellow">Optimal Length (50-60 characters recommended)</span>
+    <h1>SEO Title and Meta Description Checker</h1>
+
+    <!-- SEO Title Checker -->
+    <div>
+        <label for="seo-title">Enter SEO Title:</label>
+        <input type="text" id="seo-title" placeholder="Enter your SEO title here...">
+        
+        <div class="status">
+            Status: <span id="status" class="yellow">Optimal Length (50-60 characters recommended)</span>
+        </div>
+
+        <h2>Preview:</h2>
+        <div class="preview" id="seo-preview">Your SEO title will appear here...</div>
     </div>
 
-    <h2>Preview:</h2>
-    <div class="preview" id="seo-preview">Your SEO title will appear here...</div>
+    <!-- Meta Description Checker -->
+    <div class="section">
+        <h2>Meta Description Checker</h2>
+        <label for="meta-description">Enter Meta Description:</label>
+        <input type="text" id="meta-description" placeholder="Enter your Meta description here...">
+        
+        <div class="status">
+            Status: <span id="meta-status" class="yellow">Optimal Length (150-160 characters recommended)</span>
+        </div>
+
+        <h3>Preview:</h3>
+        <div class="preview" id="meta-preview">Your Meta description will appear here...</div>
+    </div>
 </div>
 
 <script>
+    // SEO Title Checker
     const seoTitleInput = document.getElementById("seo-title");
     const statusText = document.getElementById("status");
     const preview = document.getElementById("seo-preview");
@@ -107,6 +132,31 @@
         } else {
             statusText.textContent = "Optimal length.";
             statusText.className = "green";
+        }
+    });
+
+    // Meta Description Checker
+    const metaDescriptionInput = document.getElementById("meta-description");
+    const metaStatusText = document.getElementById("meta-status");
+    const metaPreview = document.getElementById("meta-preview");
+
+    metaDescriptionInput.addEventListener("input", function() {
+        const description = metaDescriptionInput.value;
+        const descriptionLength = description.length;
+
+        // Update the preview
+        metaPreview.textContent = description;
+
+        // Status based on character count
+        if (descriptionLength > 160) {
+            metaStatusText.textContent = "Meta description too long!";
+            metaStatusText.className = "red";
+        } else if (descriptionLength < 150) {
+            metaStatusText.textContent = "Meta description too short!";
+            metaStatusText.className = "yellow";
+        } else {
+            metaStatusText.textContent = "Optimal length.";
+            metaStatusText.className = "green";
         }
     });
 </script>
