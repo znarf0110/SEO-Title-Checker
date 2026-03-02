@@ -42,21 +42,6 @@
             border-radius: 4px;
         }
 
-        .character-count {
-            font-size: 14px;
-            margin-bottom: 10px;
-            color: #666;
-        }
-
-        .preview {
-            padding: 10px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: "Courier New", monospace;
-            color: #222;
-        }
-
         .status {
             font-weight: bold;
             font-size: 16px;
@@ -73,6 +58,15 @@
         .yellow {
             color: orange;
         }
+
+        .preview {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: "Courier New", monospace;
+            color: #222;
+        }
     </style>
 </head>
 <body>
@@ -83,7 +77,7 @@
     <input type="text" id="seo-title" placeholder="Enter your SEO title here...">
     
     <div class="status">
-        Status: <span id="status" class="yellow">Recommended Length (50-60 characters recommended)</span>
+        Status: <span id="status" class="yellow">Optimal Length (50-60 characters recommended)</span>
     </div>
 
     <h2>Preview:</h2>
@@ -110,7 +104,7 @@
             statusText.textContent = "Title too short!";
             statusText.className = "yellow";
         } else {
-            statusText.textContent = "Recommended.";
+            statusText.textContent = "Optimal length.";
             statusText.className = "green";
         }
     });
