@@ -140,25 +140,25 @@
     const metaStatusText = document.getElementById("meta-status");
     const metaPreview = document.getElementById("meta-preview");
 
-    metaDescriptionInput.addEventListener("input", function() {
-        const description = metaDescriptionInput.value;
-        const descriptionLength = description.length;
+  metaDescriptionInput.addEventListener("input", function() {
+    const description = metaDescriptionInput.value;
+    const descriptionLength = description.length;
 
-        // Update the preview
-        metaPreview.textContent = description;
+    // Update the preview
+    metaPreview.textContent = description;
 
-        // Status based on character count
-        if (descriptionLength > 160) {
-            metaStatusText.textContent = "Meta description too long!";
-            metaStatusText.className = "red";
-        } else if (descriptionLength < 150) {
-            metaStatusText.textContent = "Meta description too short!";
-            metaStatusText.className = "yellow";
-        } else {
-            metaStatusText.textContent = "Optimal length.";
-            metaStatusText.className = "green";
-        }
-    });
+    // Status based on character count
+    if (descriptionLength > 160) {
+        metaStatusText.textContent = "Meta description too long!";
+        metaStatusText.className = "red";
+    } else if (descriptionLength < 150) {
+        metaStatusText.textContent = "Meta description too short!";
+        metaStatusText.className = "yellow";
+    } else {
+        metaStatusText.textContent = "Optimal length.";
+        metaStatusText.className = "green";
+    }
+});
 </script>
 
 </body>
