@@ -82,12 +82,8 @@
     <label for="seo-title">Enter SEO Title:</label>
     <input type="text" id="seo-title" placeholder="Enter your SEO title here...">
     
-    <div class="character-count">
-        <span id="char-count">0</span> / 60 characters
-    </div>
-
     <div class="status">
-        Status: <span id="status" class="yellow">Optimal Length (50-60 characters recommended)</span>
+        Status: <span id="status" class="yellow">Recommended Length (50-60 characters recommended)</span>
     </div>
 
     <h2>Preview:</h2>
@@ -96,14 +92,12 @@
 
 <script>
     const seoTitleInput = document.getElementById("seo-title");
-    const charCount = document.getElementById("char-count");
     const statusText = document.getElementById("status");
     const preview = document.getElementById("seo-preview");
 
     seoTitleInput.addEventListener("input", function() {
         const title = seoTitleInput.value;
         const titleLength = title.length;
-        charCount.textContent = titleLength;
 
         // Update the preview
         preview.textContent = title;
@@ -116,7 +110,7 @@
             statusText.textContent = "Title too short!";
             statusText.className = "yellow";
         } else {
-            statusText.textContent = "Optimal length.";
+            statusText.textContent = "Recommended.";
             statusText.className = "green";
         }
     });
