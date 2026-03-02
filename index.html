@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Title Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        label {
+            font-size: 18px;
+            color: #555;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .character-count {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .preview {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: "Courier New", monospace;
+            color: #222;
+        }
+
+        .status {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .yellow {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>SEO Title Checker Tool</h1>
+    <label for="seo-title">Enter SEO Title:</label>
+    <input type="text" id="seo-title" placeholder="Enter your SEO title here...">
+    
+    <div class="character-count">
+        <span id="char-count">0</span> / 60 characters
+    </div>
+
+    <div class="status">
+        Status: <span id="status" class="yellow">Optimal Length (50-60 characters recommended)</span>
+    </div>
+
+    <h2>Preview:</h2>
+    <div class="preview" id="seo-preview">Your SEO title will appear here...</div>
+</div>
+
+<script>
+    const seoTitleInput = document.getElementById("seo-title");
+    const charCount = document.getElementById("char-count");
+    const statusText = document.getElementById("status");
+    const preview = document.getElementById("seo-preview");
+
+    seoTitleInput.addEventListener("input", function() {
+        const title = seoTitleInput.value;
+        const titleLength = title.length;
+        charCount.textContent = titleLength;
+
+        // Update the preview
+        preview.textContent = title;
+
+        // Status based on character count
+        if (titleLength > 60) {
+            statusText.textContent = "Title too long!";
+            statusText.className = "red";
+        } else if (titleLength < 50) {
+            statusText.textContent = "Title too short!";
+            statusText.className = "yellow";
+        } else {
+            statusText.textContent = "Optimal length.";
+            statusText.className = "green";
+        }
+    });
+</script>
+
+</body>
+</html>
